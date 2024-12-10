@@ -66,7 +66,14 @@ function SearchContainer({
   const fetch = React.useMemo(
     () =>
       throttle((request, callback) => {
-        autocompleteService.current.getPlacePredictions(request, callback);
+        console.log("Autocomplete request:", request); //debug Mack
+        autocompleteService.current.getPlacePredictions(
+          {
+            ...request,
+            componentRestrictions: { country: "au" }, // Replace "us" with your desired country code
+          },
+          callback
+        );
       }, 200),
     []
   );
@@ -77,6 +84,7 @@ function SearchContainer({
       setOpen(true);
       return;
     }
+    console.log("Location data:", data); // Debugging line
     setSearch(data.deliveryAddress);
     setLocation(data);
   };
@@ -112,6 +120,7 @@ function SearchContainer({
     }
 
     fetch({ input: inputValue }, (results) => {
+      console.log("Autocomplete results:", results);
       if (active) {
         let newOptions = [];
         if (value) {
@@ -266,6 +275,7 @@ function SearchContainer({
                                 deliveryAddress: newValue.description,
                                 latitude: location.lat(),
                                 longitude: location.lng(),
+                              
                               });
                             });
                           } else {
@@ -373,6 +383,7 @@ function SearchContainer({
                             </Grid>
                           );
                         }}
+                      
                       />
                     ) : (
                       <SearchRestaurant

@@ -117,6 +117,10 @@ function RestaurantDetail() {
       const day = date.getDay();
       const hours = date.getHours();
       const minutes = date.getMinutes();
+      console.log("date", date);
+      console.log("day", day);
+      console.log("hours", hours);
+      console.log("minutes", minutes);
       const todaysTimings = data.restaurant.openingTimes.find(
         (o) => o.day === DAYS[day]
       );
@@ -128,7 +132,6 @@ function RestaurantDetail() {
           hours <= Number(t.endTime[0]) &&
           minutes <= Number(t.endTime[1])
       );
-
       return times.length > 0;
     } else return false;
   }, [data]);

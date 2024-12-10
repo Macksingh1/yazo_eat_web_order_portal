@@ -64,7 +64,10 @@ function Subheader() {
   const fetch = React.useMemo(
     () =>
       throttle((request, callback) => {
-        autocompleteService.current.getPlacePredictions(request, callback);
+        autocompleteService.current.getPlacePredictions({
+          ...request,
+          componentRestrictions: { country: "au" }, // Replace "us" with your desired country code
+        }, callback);
       }, 200),
     []
   );
