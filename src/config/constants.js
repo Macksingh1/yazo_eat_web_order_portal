@@ -5,10 +5,10 @@ import ConfigurationContext from "../../src/context/Configuration";
 const ConfigurableValues = () => {
   const configuration = useContext(ConfigurationContext);
 
-  // const SERVER_URL = "https://yazoeatbackend-production.up.railway.app/";
-  // const WS_SERVER_URL = "https://yazoeatbackend-production.up.railway.app/";
-  const SERVER_URL = 'http://192.168.1.232:8001/'
-  const WS_SERVER_URL = 'ws://192.168.1.232:8001/'
+  const SERVER_URL = "https://yazoeatbackend-production.up.railway.app/";
+  const WS_SERVER_URL = "https://yazoeatbackend-production.up.railway.app/";
+  // const SERVER_URL = 'http://192.168.1.232:8001/'
+  // const WS_SERVER_URL = 'ws://192.168.1.232:8001/'
 
   
   const GOOGLE_CLIENT_ID = configuration?.webClientID;
